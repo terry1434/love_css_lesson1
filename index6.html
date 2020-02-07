@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        body{
+            width:100vw;
+            height:100vh;
+            display:flex;
+            flex-direction: column;
+        }
+        div.main{
+            background-color:thistle;
+            text-align:center;
+            order:2;
+            flex:1 0 auto;
+        }
+        div.header{
+            background-color:tomato;
+            text-align:center;
+            order:1;
+        }
+        div.footer{
+            background-color: yellowgreen;
+            text-align:center;
+            order:3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">main</div>
+    <div class="header">header</div>
+    <div class="footer">footer</div>
+</body>
+
+</html>

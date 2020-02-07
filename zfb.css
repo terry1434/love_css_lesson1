@@ -1,0 +1,54 @@
+*{
+    margin:0;
+    padding:0;
+}
+.content{
+    margin-left:20%;
+    margin-right:20%;
+    /* width:auto; */
+    height:100vh;
+    background-color:red;
+}
+.nav{
+    position: relative;
+    display:grid;
+    height:20vh;
+    width:100%;
+    background:linear-gradient(to top right,#4478f0,#98ca67);
+}
+.container1{
+    margin-top:10px;
+    position: relative;
+    display:grid;
+    width:100%;
+    height:50vh;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: repeat(3,33.33%);
+    background:#ffffff;
+    grid-gap:10px;
+}
+.container1 .box{
+    width:100%;
+    height:100%;
+    display:flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction:column;
+    position: relative;
+}
+.container1 .box>div{
+    width:100%;
+    height:50%;
+    background:transparent;
+    border-radius: 50%;
+    border:3px solid green;
+}
+.container1 .box>div:after{
+    content:"标题";
+    width:100%;
+    height:50%;
+    position: absolute;
+    margin:0 auto;
+    text-align: center;
+    bottom:0;
+}

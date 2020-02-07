@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="script/clone.js"></script>
+    <script>
+        var obj1 = {
+            name: "6115001",
+            age: "33",
+            country: "China",
+            city: "shanghai",
+            showDetial: function () {
+                console.log(this.name);
+                console.log(this.age);
+                console.log(this.country);
+                console.log(this.city);
+            },
+            citys: ['beijing', 'guangzhou', 'shanghai', 'hongkong', 'taiwan'],
+            history: {
+                year1: 1987,
+                year2: [1997, 1999],
+                year3: [2008]
+            },
+            story: function () {
+                console.log(this.history.year1);
+                console.log(this.history.year2);
+                console.log(this.history.year3);
+            }
+        }
+        var obj2 = {};
+        window.objClone(obj1, obj2);
+        console.log(obj2);
+        console.log("**********************************")
+        var orgin_arr = [1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 6, 6, 7, 7, 8, 9, 10];
+        console.log(window.arr_nosame(orgin_arr));
+        var reverse_arr = orgin_arr.reverse();
+        console.log(reverse_arr);
+        var arr_sort2 = reverse_arr.sort(function (a, b) {
+            return 0.5 - Math.random();
+        });
+        console.log(arr_sort2);
+        console.log("******************")
+        var likearr = {
+            "2":"a",
+            "3":"b",
+            "length":3,
+            push:Array.prototype.push
+        }
+        likearr.push('c');
+        likearr.push('d');
+        console.log(likearr);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

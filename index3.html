@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Grid布局</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div.warp {
+            width: 100vw;
+            height: 100vh;
+            display: grid;
+            box-sizing: border-box;
+            /* grid-template-columns: repeat(2,1fr); */
+            /* grid-template-columns: 1fr 1fr; */
+            /* grid-auto-rows:100px; */
+            /* grid-auto-rows: minmax(auto, auto); */
+            grid-template-rows: 1fr 8fr 1fr;
+            grid-template-areas:
+                'box1 box1 box1'
+                'box2 box3 box4'
+                'footer footer footer';
+            /* row-gap:7px;
+                column-gap:7px; */
+        }
+
+        div.warp>div {
+            margin: 10px;
+            background-color: #eee;
+            background-clip: content-box;
+            box-sizing: border-box;
+        }
+
+        div.warp>div:nth-child(odd) {
+            background-color: #555;
+        }
+
+        div.box1 {
+            grid-area: box1;
+            text-align: center;
+            line-height: 10vh;
+        }
+
+        div.box2 {
+            grid-area: box2;
+
+        }
+
+        div.box3 {
+            grid-area: box3;
+
+        }
+
+        div.box4 {
+            grid-area: box4;
+        }
+
+        div.footer {
+            grid-area: footer;
+            text-align: center;
+            line-height: 10vh;
+        }
+
+        /* @media screen and (max-width:540px) {
+            div.warp{
+                grid-template-rows: repeat(auto-fill,100%);
+                grid-template-areas: 
+                'box1'
+                'box2'
+                'box3'
+                'box4'
+                'box5'
+                'footer';
+                
+            }
+        } */
+
+        div.warp2 {
+            width: 50vw;
+            height: 50vh;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            border: 3px solid blueviolet;
+            box-sizing: border-box;
+            display: grid;
+            grid-template-rows: [r1-start] 1fr [r1-end r2-start] 1fr [r2-end r3-start] 1fr [r3-end];
+            grid-template-columns: [c1-start] 1fr [c1-end c2-start] 1fr [c2-end c3-start] 1fr [c3-end];
+            grid-auto-rows: minmax(100px, 400px);
+            grid-auto-columns: minmax(100px, 400px);
+        }
+
+        div.warp2>div.box21 {
+            background-color: orange;
+            /* grid-row-start:r3-start;
+            grid-row-end:r3-end;
+            grid-column-start:c3-start;
+            grid-column-end:c3-end; */
+            grid-row:1/span 2;
+            grid-column:1/span 1;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div class="warp">
+        <div class="box1">CSS Grid布局</div>
+        <div class="box2"><h4>box2</h4>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo, eius.</div>
+        <div class="box3"><h4>box3</h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam eum magnam doloremque unde
+            harum, sed deleniti error quae porro fuga.</div>
+        <div class="box4"><h4>box4</h4>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus, quaerat!</div>
+        <div class="footer">@footer</div>
+    </div> -->
+    <div class="warp2">
+        <div class="box21">1</div>
+    </div>
+</body>
+
+</html>

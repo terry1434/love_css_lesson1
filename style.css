@@ -1,0 +1,74 @@
+*{
+    margin:0;
+    padding:0;
+}
+.container1{
+    display:grid;
+    height:100vh;
+    grid-template-columns: repeat(6,1fr);
+    grid-template-rows:40px auto auto 40px;
+    grid-template-areas:
+    ". header header header header header"
+    "slide1 section1 section1 section1 section1 slide2"
+    "slide1 section2 section2 section2 section2 slide2"
+    ". footer footer footer footer slide2";
+}
+.container1>div{
+    text-align:center;
+    border:1px solid red;
+}
+.container1>div:nth-child(odd){
+    background-color:#3e7426;
+}
+.container1>div:nth-child(even){
+    background-color:#610c2b;
+}
+.container1 .header{
+    grid-area: header;
+    line-height:40px;
+}
+.container1 .slide1{
+    grid-area: slide1;
+    line-height:auto;
+}
+.container1 .section1{
+    grid-area: section1;
+}
+.container1 .section2{
+    grid-area: section2;
+}
+.container1 .slide2{
+    grid-area: slide2;
+}
+.container1 .footer{
+    grid-area: footer;
+    line-height:40px;
+}
+
+@media screen and (max-width:700px){
+    .container1{
+        grid-template-columns: repeat(3,1fr);
+        grid-template-areas: 
+        "header header header"
+        "section1 section1 section1"
+        "section2 section2 section2"
+        "footer footer footer";
+    }
+    .slide1,.slide2{
+        display:none;
+    }
+}
+
+.container2{
+    height:100vh;
+    display:grid;
+    justify-content: center;
+    grid-gap:10px;
+    grid-template-columns: repeat(auto-fit,minmax(100px,200px));
+
+}
+.container2 .box{
+    background-color:lightblue;
+    border:1px solid black;
+    max-height:200px;
+}

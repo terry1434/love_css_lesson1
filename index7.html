@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+            background-color: #e7f3fe;
+            user-select: none;
+        }
+
+        label {
+            z-index: 1;
+            display: block;
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.35s linear;
+            cursor:pointer;
+        }
+
+        ul.slidebar {
+            position: relative;
+            background-color: transparent;
+            width: 600px;
+            height: 40px;
+            display: flex;
+            list-style: none;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+            border-radius: 5px;
+            transform: scaleX(0);
+            transition: all 0.35s linear;
+            box-shadow: 0 0 5px #075fab;
+        }
+
+
+        ul.slidebar li {
+            max-width: 125px;
+            border-radius: 5px;
+            text-align: center;
+            flex: 1 0 100px;
+            color: #075fab;
+        }
+
+        ul.slidebar li:hover {
+            box-shadow: inset 0 0 5px #0a87f5,
+                inset 0 0 15px #85c3fa,
+                inset 0 0 25px #b6dbfc;
+        }
+
+        div.button {
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 5px;
+            z-index: 99;
+            background-color: #097adc;
+            width: 40px;
+            height: 40px;
+            transform: rotate(0turn);
+            transform-origin: center center;
+            transition: all 0.35s linear;
+        }
+
+        div.button i {
+            margin: auto;
+            font-size: 35px;
+            color: #f5f5f5;
+        }
+
+        #check:checked+label {
+            left:74%;
+        }
+        #check:checked+label i:before {
+            content:'\f00d';
+        }
+        #check:checked+label>div.button{
+            transform:translate(750%,-50%);
+        }
+        #check:checked+label>div.button {
+            transform: rotate(0.25turn);
+        }
+
+        #check:checked~ul.slidebar {
+            transform: scaleX(1);
+        }
+
+        input[type=checkbox] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="checkbox" id="check"></input>
+    <label for="check">
+        <div class="button"><i class="fa fa-bars"></i></div>
+    </label>
+    <ul class="slidebar">
+        <li>服务</li>
+        <li>卫生</li>
+        <li>预约</li>
+        <li>信息</li>
+        <li>疫情</li>
+    </ul>
+</body>
+
+</html>

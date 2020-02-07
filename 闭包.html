@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        Father.prototype.history = "200";
+        function Father(){
+            this.lastname="zhang";
+        }
+        
+
+        function Son(){
+            this.network = "4G";
+        }
+
+        function inherit(Target,Orgin){
+            function F(){};
+           
+            F.prototype = Orgin.prototype;
+            Target.prototype = new F();
+            Target.prototype.constructor = Target;
+        }
+        inherit(Son,Father);
+        // function Middle(){
+        // }
+        // Middle.prototpye = Father.prototpye;
+        // Son.prototype = new Middle();
+
+        var mySon = new Son();
+        Son.prototype.sex="male";
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0
+    }
+
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: 100vh;
+    }
+
+    .container {
+        width: 500px;
+        height: 500px;
+        border: 1px solid #ddd;
+    }
+
+    .row {
+        display: grid;
+        width: 100%;
+        height: 100%;
+        grid-template-columns: repeat(12, 1fr);
+        grid-template-rows: repeat(12, 1fr);
+        grid-auto-rows: 100px;
+        grid-gap: 10px;
+    }
+
+    [class^='col'] {
+        grid-row: span 1;
+        height: 100px;
+        background-color: violet;
+        border: 1px solid blueviolet;
+        text-align: center;
+        line-height: 100px;
+
+    }
+
+    .col-1 {
+        grid-column-end: span 1;
+    }
+
+    .col-2 {
+        grid-column-end: span 2;
+    }
+
+    .col-3 {
+        grid-column-end: span 3;
+    }
+
+    .col-4 {
+        grid-column-end: span 4;
+    }
+
+    .col-5 {
+        grid-column-end: span 5;
+    }
+
+    .col-6 {
+        grid-column-end: span 6;
+    }
+
+    .col-7 {
+        grid-column-end: span 7;
+    }
+
+    .col-8 {
+        grid-column-end: span 8;
+    }
+
+    .col-9 {
+        grid-column-end: span 9;
+    }
+
+    .col-10 {
+        grid-column-end: span 10;
+    }
+
+    .col-11 {
+        grid-column-end: span 11;
+    }
+
+    .col-12 {
+        grid-column-end: span 12;
+    }
+
+    div[class^="col"]:nth-child(8) {
+        display: flex;
+        justify-content: stretch;
+        align-items: center;
+    }
+
+    #rangeValue {
+        width: 40px;
+        background-color: blue;
+        line-height: 20px;
+        margin-right: 10px;
+        border-radius: 5px;
+        position: relative;
+    }
+
+    #rangeValue::after {
+        content: '';
+        display: block;
+        position: absolute;
+        border-top: 4px solid transparent;
+        border-bottom: 4px solid transparent;
+        border-left: 4px solid blue;
+        top: calc(50% - 4px);
+        right: -4px;
+    }
+
+    input[type=range] {
+        -webkit-appearance:none;
+        background-color: rgb(211, 203, 203);
+        outline: none;
+        width: auto;
+        height: 12px;
+        border-radius: 4px;
+        box-shadow: 0 0 6px rgb(128, 32, 148);
+    }
+
+    input[type=range]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        background-color: lightblue;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        transition: .3s;
+    }
+
+    input[type=range]:active::-webkit-slider-thumb {
+        widows: 26px;
+        height: 26px;
+        background-color: skyblue;
+    }
+    .span{
+        /* grid-column-start:2;
+        grid-column-end:span 2; */
+        grid-row:2/span 1;
+        grid-column:1/span 1;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-2">1</div>
+            <div class="col-8">2</div>
+            <div class="col-2">3</div>
+            <div class="col-2 span">4</div>
+            <div class="col-2">5</div>
+            <div class="col-2">6</div>
+            <div class="col-1">7</div>
+            <div class="col-6">
+                <div id='rangeValue'></div>
+                <input type="range" name="" id="" min="0" max="100" value="33">
+            </div>
+        </div>
+    </div>
+    <script>
+        window.onload = function () {
+            const value = document.getElementById('rangeValue');
+            const elRange = document.querySelector('input[type=range]');
+            value.innerText = elRange.value;
+            console.log(elRange.value);
+            elRange.addEventListener('input', function () {
+                value.innerText = elRange.value;
+            })
+        }
+    </script>
+</body>
+
+</html>

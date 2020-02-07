@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width:100vw;
+            height:100vh;
+            font-size: 12px;
+            font-family: Arial, Helvetica, sans-serif;
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+            padding:10px;
+        }
+
+        div.container {
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+            background-color: #470;
+        }
+
+        div.order {
+            width: 200px;
+            height: 100px;
+            box-sizing: border-box;
+            padding: 10px;
+            background-color: royalblue;
+            background-clip: content-box;
+            border: 1px solid #eee;
+            flex: 1 1 auto;
+            position: relative;
+            transition:1s;
+        }
+
+        div.order>input {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            line-height: 10px;
+            font-size: 4px;
+        }
+
+        .nav {
+            width: calc(100% - 20px);
+            height: 40px;
+            display: flex;
+            flex-direction: row;
+            /* background-color:#eee; */
+            justify-content: center;
+            align-items:center;
+            margin-bottom:5px;
+        }
+
+        ul {
+            list-style: none;
+            height: 100%;
+            display: flex;
+            justify-content: space-evenly;
+            flex-grow: 1;
+            flex-shrink: 0;
+        }
+
+        ul>li {
+            font-size: 12px;
+            float: left;
+            flex:0 1 80px;
+            line-height:40px;
+        }
+
+        ul>li:last-child {
+            margin-left: auto;
+            margin-right:10px;
+        }
+        div.newJoke{
+            background-color:cornflowerblue;
+            text-align:left;
+            justify-self: flex-start;
+            align-self:flex-start;
+            margin-top:5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav">
+        <ul>
+            <li>首页</li>
+            <li>课程</li>
+            <li>文档</li>
+            <li>登录/注册</li>
+        </ul>
+    </div>
+    <div class="container">
+        <div class="order" style="background-color:#0984e3">1<input type="button" value="向上"></input></div>
+        <div class="order" style="background-color:#ff7675">2<input type="button" value="向上"></input></div>
+        <div class="order" style="background-color:#fdcb6e">3<input type="button" value="向上"></input></div>
+    </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        window.onload = function () {
+            console.time('start');
+            const btns = document.body.querySelectorAll('div.container>.order>input');
+            const parents = document.body.querySelectorAll('div.container>.order');
+            console.log(btns);
+
+            btns.forEach(function (item, index) {
+                parents[index].style.order = 0;
+                item.addEventListener('click', function () {
+                    parents[index].style.order = parents[index].style.order - 1;
+                })
+            })
+            axios.get('https://autumnfish.cn/api/joke/list?num=30').then((res)=>{
+                const jokes = res.data.jokes;
+                jokes.forEach(function(item,index){
+                    let el = document.createElement('div');
+                    el.classList="newJoke";
+                    let txt = document.createTextNode(item);
+                    el.appendChild(txt);
+                    document.body.appendChild(el);
+                })
+                console.timeEnd('start');
+            })
+        }
+
+    </script>
+</body>
+
+</html>

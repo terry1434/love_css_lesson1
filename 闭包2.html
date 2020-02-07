@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style3.css">
+</head>
+
+<body>
+    <div class="loading">
+        <div class="part"></div>
+        <div class="part"></div>
+        <div class="part"></div>
+        <div class="part"></div>
+        <div class="part"></div>
+        <div class="part"></div>
+        <div class="part"></div>
+        <div class="part"></div>
+    </div>
+    <script>
+        // "use strict"
+        Father.prototype.history = 200;
+        Father.prototype.lastname = 'zhang';
+        function Father() {
+        }
+        function Son() {
+        }
+        function inherit(Target, Orgin) {
+            var F = function f() { };
+            F.prototype = Orgin.prototype;
+            Target.prototype = new F();
+            Target.prototype.contructor = Target;
+            Target.prototype.uber = Orgin;
+            return new Target();
+        };
+        var mySon = inherit(Son, Father);
+
+        var myFuc = (function () {
+            var const_id = '6115001';
+            return function () {
+                console.log(const_id);
+            };
+        }());
+        var myFuc2 = (function () {
+            var const_id = '6115002';
+            return function () {
+                console.log(const_id);
+            };
+        }());
+
+        var newobj = {
+            obj1: "obj1",
+            obj2: "obj2",
+            obj3: "obj3",
+            obj4: "obj4",
+            obj5: "obj5",
+            obj6: "obj6",
+            __proto__: { lastname: "zhang" }
+        }
+        for (var prop in newobj) {
+            if (newobj.hasOwnProperty(prop)) {
+                console.log(newobj[prop]);
+            }
+        }
+
+        function clone(Target, Orgin) {
+            for (var prop in Orgin) {
+                if (Orgin.hasOwnProperty(prop)) {
+                    Target[prop] = Orgin[prop];
+                }
+            }
+            var F = function f() { };
+            F.prototype = Orgin.prototype;
+            Target.prototype = new F();
+            Target.prototype.constructor = Target;
+            Target.prototype.uber = Orgin;
+            return Target;
+        }
+
+        var newClass = Object.create(null);
+        clone(newClass, Father);
+
+        function foo(x) {
+            console.log(arguments);
+            return x;
+        }
+        foo(1, 2, 3, 4, 5);
+
+        var x = 1;
+        if (function f() { }) {
+            x += typeof f;
+        }
+
+        console.log(x);
+
+        function foo2(x) {
+            console.log(x);
+            console.log(arguments);
+            console.log(x == arguments);
+        }
+        foo2([1, 2, 3, 4, 5]);
+        var arrow = (m) => {
+            console.log(this);
+            console.log(m);
+        }
+        console.info(x);
+        console.log(x);
+
+        console.log("****************************");
+        var name = "222";
+        var a = {
+            name: "111",
+            say: function () {
+                console.log(name);
+            }
+        }
+        var say1 = a.say;
+        say1();//222
+        a.say();//111
+        function test() {
+            console.log(this);
+        }
+        var b = {
+            name: "333",
+            say: function (fuc) {
+                test.call(this);
+            }
+        }
+        b.say(a.say);//222
+        b.say = a.say;
+        b.say();//333
+
+        console.log("***************");
+        var num3 = (function aaa(n) {
+            if (n == 1) {
+                return 1;
+            } else {
+                return n * arguments.callee(n - 1);
+            }
+        }(2));
+        console.log(num3);
+
+        console.log("***************");
+        var aa=0;
+        function text2(){
+
+            this.aa = 5;
+            console.log(aa);
+            console.log(this.aa);
+        }
+        text2();
+        console.log("***************");
+        function print1(){
+            console.log(zxj);
+            var zxj =2;
+            console.log(zxj);
+            // console.log(hello);
+        }
+        print1();
+        console.log("***************");
+        function print2(){
+            var hello;
+            hello();
+            function hello(){
+                console.log("hello!");
+            }
+        }
+        print2();
+    </script>
+</body>
+
+</html>

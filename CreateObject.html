@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var obj1 = {
+            name: "6115001",
+            prop1: [1, 2, 3, 4, 5, [6, 7, 8, 9], 10],
+            prop2: function () {
+                return 'prop2';
+            },
+            prop3: {
+                wife: 'celine',
+                child: 'baby'
+            }
+        };
+        var obj2 = {};
+        function clone(Orgin, Target) {
+            Target = {};
+            for (const key in Orgin) {
+                if (Orgin.hasOwnProperty(key)) {
+                    const element = Orgin[key];
+
+                    if (element && Object.prototype.toString.call(element) == '[object Array]'
+                        || Object.prototype.toString.call(element) == '[object Object]') {
+                        Target[key] = clone(Orgin[key], Target[key]);
+                    } else {
+                        Target[key] = element;
+                    }
+                }
+            }
+            return Target;
+        }
+        obj2 = clone(obj1, obj2);
+
+        console.log("***************")
+        var h = function a() {
+            return 123;
+        }
+        //typeof a();//error:a is not defined
+        console.log(0.5 - Math.random());
+        console.log("****************字符串******************");
+        var str = "yuiejrhkfgxjnfgjjfndhgyjkfjgjkfnbjgk";
+        var haveKey = false;
+
+        //找出第一个不重复的字符并返回。
+        function findKey(str) {
+            var temp = {};
+            if (!typeof (str) == "string") return '';
+            if (str.length == 0) return '';
+            temp[str[0]] = 0;
+            for (let i = 1; i < str.length; i++) {
+                const element = str[i];
+                if (temp.hasOwnProperty(element)) {
+                    temp[element]++;
+                } else {
+                    temp[element] = 0;
+                }
+            }
+            return temp;
+        }
+        var needsort = findKey(str);
+        console.log(needsort);
+        for (const key in needsort) {
+            if (needsort.hasOwnProperty(key)) {
+                console.log(key + ":" + needsort[key]);
+            }
+        }
+        console.log("************");
+        function trycatch() {
+            try {
+                console.log("xxx");
+                console.log(aaaa);
+                console.log("yyyy");
+            } catch (e) {
+                console.log(e);
+            }
+            eval("console.log('use eval');");
+            console.log(`${window.prop1}`);
+        }
+        trycatch();
+    </script>
+</body>
+
+</html>

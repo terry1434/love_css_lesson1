@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        div.container {
+            display: grid;
+            width: 100vw;
+            height: 100vh;
+            grid-template-rows: 60px 1fr 60px 60px;
+            grid-template-columns: 60px 1fr 60px;
+            grid-template-areas: 'header header header'
+                'slide main .'
+                'footerbar footerbar footerbar'
+                'footer footer footer';
+            background-color: #ddd;
+            background-clip: padding-box;
+            gap: 10px;
+        }
+
+        .hearder {
+            background-color: burlywood;
+            grid-area: header;
+        }
+
+        .slide {
+            background-color: cyan;
+            grid-area: slide;
+        }
+
+        .main {
+            background-color: darkmagenta;
+            grid-area: main;
+        }
+
+        .footerbar {
+            background-color: gold;
+            grid-area: footerbar;
+            display: grid;
+            grid-template-columns: repeat(4, 25%);
+            grid-template-rows: 60px;
+            justify-content: space-around;
+            /* justify-items: center;
+            align-items: center; */
+            place-items: end center;
+            /* align-items: center;
+            justify-items: stretch; */
+        }
+
+        .footerbar>button {
+            box-sizing: border-box;
+            width: 40px;
+            height: 40px;
+            /* line-height: 40px; */
+            text-align: center;
+            -webkit-appearance: none;
+            outline-color: transparent;
+        }
+
+        .footerbar>button:first-child {
+            /* justify-self: stretch;
+            align-self:end; */
+            place-self: start start;
+        }
+
+        .footerbar>div:hover {
+            cursor: pointer;
+        }
+
+        .footer {
+            background-color: forestgreen;
+            grid-area: footer;
+        }
+
+        div.flex {
+            width: 200px;
+            height: 60px;
+            display: flex;
+            /* justify-content: center;
+            align-content: center; */
+            /* place-content: center flex-start; */
+            /* flex-wrap: wrap;
+            flex-direction: row; */
+            flex-flow:row wrap;
+            border: 1px solid yellow;
+        }
+
+        div.flex>div {
+            width: 60px;
+            height: 20px;
+            background-color: #abc;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="hearder">hearder</div>
+        <div class="slide">slide</div>
+        <div class="main">main</div>
+        <div class="footerbar">
+            <button>相声</button>
+            <button>小品</button>
+            <button>曲艺</button>
+            <button>歌舞</button>
+        </div>
+        <div class="footer">footer</div>
+    </div>
+    <div class="flex">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+    </div>
+</body>
+
+</html>
