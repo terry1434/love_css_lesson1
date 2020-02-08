@@ -14,16 +14,39 @@
         }
 
         body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
             width: 100vw;
             height: 100vh;
             background-color: #e7f3fe;
             user-select: none;
+            display: grid;
+            grid-template-columns: 60px 1fr 60px;
+            grid-template-rows: 60px 1fr 60px;
+            grid-template-areas: 'header header header'
+                'main main slide'
+                'footer footer footer';
         }
 
-        label {
+        div.header {
+            grid-area: header;
+            background-color: #f5f5f5;
+            position:relative;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        div.main {
+            grid-area: main;
+            background-color: #16542b;
+        }
+
+        div.footer {
+            grid-area: footer;
+            background-color: #20f789;
+        }
+
+
+        label.forcheckbox {
             z-index: 1;
             display: block;
             position: absolute;
@@ -33,7 +56,7 @@
             top: 50%;
             transform: translate(-50%, -50%);
             transition: all 0.35s linear;
-            cursor:pointer;
+            cursor: pointer;
         }
 
         ul.slidebar {
@@ -89,14 +112,17 @@
         }
 
         #check:checked+label {
-            left:74%;
+            left: 74%;
         }
+
         #check:checked+label i:before {
-            content:'\f00d';
+            content: '\f00d';
         }
-        #check:checked+label>div.button{
-            transform:translate(750%,-50%);
+
+        #check:checked+label>div.button {
+            transform: translate(750%, -50%);
         }
+
         #check:checked+label>div.button {
             transform: rotate(0.25turn);
         }
@@ -112,17 +138,22 @@
 </head>
 
 <body>
-    <input type="checkbox" id="check"></input>
-    <label for="check">
-        <div class="button"><i class="fa fa-bars"></i></div>
-    </label>
-    <ul class="slidebar">
-        <li>服务</li>
-        <li>卫生</li>
-        <li>预约</li>
-        <li>信息</li>
-        <li>疫情</li>
-    </ul>
+    <div class="header">
+        <input type="checkbox" id="check"></input>
+        <label for="check" class="forcheckbox">
+            <div class="button"><i class="fa fa-bars"></i></div>
+        </label>
+        <ul class="slidebar">
+            <li>服务</li>
+            <li>卫生</li>
+            <li>预约</li>
+            <li>信息</li>
+            <li>疫情</li>
+        </ul>
+    </div>
+    <div class="main"></div>
+    <div class="footer"></div>
+
 </body>
 
 </html>
